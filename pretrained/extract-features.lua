@@ -77,6 +77,8 @@ local model = torch.load(arg[1]):cuda()
 -- Remove the fully connected layer
 assert(torch.type(model:get(#model.modules)) == 'nn.Linear')
 model:remove(#model.modules)
+assert(torch.type(model:get(#model.modules-1)) == 'nn.Pool')
+model:remove(#model.modules-1)
 
 -- Evaluate mode
 model:evaluate()
