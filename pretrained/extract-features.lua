@@ -126,9 +126,9 @@ for i=1,number_of_files,batch_size do
    if output:nDimension() == 1 then output = torch.reshape(output, 1, output:size(1)) end 
 
    if not features then
-       features = torch.FloatTensor(number_of_files, output:size(2)):zero()
+       features = torch.FloatTensor(number_of_files, 49, 2048):zero()
    end
-       features[{ {i, i-1+image_count}, {}  } ]:copy(output)
+       features[{ {i, i-1+image_count}, {}, {}  } ]:copy(output)
 
 end
 
