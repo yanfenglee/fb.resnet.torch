@@ -132,5 +132,7 @@ for i=1,number_of_files,batch_size do
 
 end
 
+print(features:size())
+
 torch.save('features.t7', {features=features, image_list=list_of_filenames})
 print('saved features to features.t7')
